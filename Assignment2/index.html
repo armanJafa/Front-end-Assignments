@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="studentModel.js"></script>
+        <title>Assignment 2</title>
+    </head>
+    <body>
+        Last Name:<input type="text" name="lastName" id="last-name-field">
+        <button type="button" id="btn-search">Search</button> 
+        <p>Students Found:</p>
+        <ul id="student-list"></ul>
+        <div id = "grades-table-container">
+
+        </div>
+        <script>
+            var btn_elm = document.getElementById("btn-search"); 
+            btn_elm.addEventListener('click', function(event) {
+                var lastName = document.getElementById('last-name-field').value; 
+
+                var amy = new Student("Amy", "Gonzalez", ["CPSC 375", "CPSC 471", "CPSC 473"], ["A", "B", "A"]); 
+                var brett = new Student("Brett", "Gonzalez", ["CPSC 375", "CPSC 351", "CPSC 473"], ["C", "C", "D"]); 
+                var gio = new Student("Gio", "Gonzalez", ["CPSC 375", "CPSC 471", "CPSC 481"], ["F", "F", "F"]); 
+
+                var model = new StudentModel(); 
+                
+                model.addStudent(amy); 
+                model.addStudent(brett); 
+                model.addStudent(gio); 
+
+                var list = new ListView(model); 
+                list.createList(lastName); 
+        });
+        </script>
+        <style>
+            table, th, td{
+                border: 1px solid black; 
+            }
+        </style>
+        
+    </body>
+</html>
